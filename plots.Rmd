@@ -10,60 +10,79 @@ output:
 library(flexdashboard)
 library(tidyverse)
 library(p8105.datasets)
+library(ggplot2)
 
 library(plotly)
 ```
 
 
-```{r}
+```{rsetup, include=FALSE}
 data("instacart")
 
-nyc_airbnb = 
-  nyc_airbnb |> 
-  mutate(rating = review_scores_location / 2) |>
-  select(
-    neighbourhood_group, neighbourhood, rating, price, room_type, lat, long) |>
-  filter(
-    !is.na(rating), 
-    neighbourhood_group == "Manhattan",
-    room_type == "Entire home/apt",
-    price <= 500,
-    price <= 100)
+aisles_summary= 
+  instacart |> 
+  count(aisle, sort=TRUE)
+
+aisles_summary |> 
+  head(10) 
 ```
 
-Column {data-width=650}
------------------------------------------------------------------------
+--------------------------------------------------------------------
 
-### Chart A
+### Barchart
 
 ```{r}
-nyc_airbnb |>
-  mutate(text_label = str_c("Price: $", price, "\nRating: ", rating)) |> 
-  plot_ly(
-    x = ~lat, y = ~long, type = "scatter", mode = "markers",
-    color = ~price, text = ~text_label, alpha = 0.5)
+aisles_summary |> 
+  filter(n > 10000) |> 
+  mutate(aisle = fct_reorder(aisle, n)) |> #shows me aisles based on n (size)
+  ggplot(aes(x = aisle, y = n, fill = aisle)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() ##flips the long aisle names
+  labs(
+    title = "Number of Items Ordered by Aisle (>10,000 orders)",
+    x = "Aisle",
+    y = "Number of Items Ordered"
+  )
 
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
+-------------------------------------------------------------------_
 
-### Chart B
+### Density Plot
 
 ```{r}
-nyc_airbnb |> 
-  mutate(neighbourhood = fct_reorder(neighbourhood, price)) |> 
-  plot_ly(y = ~price, x = ~neighbourhood, color= ~neighbourhood,
-          type = "box", colors = "viridis")
+instacart |>
+  filter(department %in% c("produce", "dairy eggs", "snacks")) |>
+  ggplot(aes(x = order_hour_of_day, fill = department)) +
+  geom_density(alpha = 0.4) +
+  labs(
+    title = "Distribution of Order Times by Department",
+    x = "Hour of Day (0–23)",
+    y = "Density",
+    fill = "Department"
+  ) +
+  theme_minimal()
 ```
 
-### Chart C
+### Boxplot
 
 ```{r}
-nyc_airbnb |> 
-  count(neighbourhood) |> 
-  mutate(neighbourhood = fct_reorder(neighbourhood, n)) |> 
-  plot_ly(x = ~neighbourhood, y = ~n, 
-          color = ~neighbourhood, type = "bar", colors = "viridis")
+ggp_instacart_violin = 
+  instacart |> 
+  filter(department %in% c("produce", "dairy eggs", "snacks")) |> 
+  ggplot(aes(x = department, y = add_to_cart_order, fill = department)) +
+  geom_violin(trim = FALSE, alpha = 0.6) +
+  labs(
+    title = "Distribution of Add-to-Cart Order by Department",
+    x = "Department",
+    y = "Add-to-Cart Order"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 13, hjust = 0.5),
+    axis.text.x = element_text(angle = 25, hjust = 1)
+  )
+
+ggp_instacart_violin
 ```
 
