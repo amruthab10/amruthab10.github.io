@@ -1,10 +1,42 @@
 ---
-title: "About this website"
+title: "Academic and Professional Experience "
 output: 
   html_document:
     theme: cerulean
 ---
+-------------------------------------------------------------
+![](https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3OTJyN3JlMWpzcnprN3Y1MjNkb3B2amFobjUxaTBlZ2xqc3ZmM2J5cCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/eNAKa7nXenniRdDIu6/giphy.gif)
+-------------------------------------------------------------
 
-This website was coded by Amrutha Banda using RMarkdown to do all the hard work. 
+
+## Academics: 
+
+• Columbia University, Mailman School of Public HealthAug 2025- May 2027 
+
+*Master of Science in Biostatistics/ Data Science*
+
+• The College of New Jersey, School of Nursing and Health Sciences Aug 2021- May 2025 
+
+*Bachelor of Science in Public Health, Chemistry Minor* 
+
+
+## Professional: 
+
+1. Clinical Nutrition Intern, NYU Langone
+At NYU Langone, I worked alongside registered dietitians to interpret electronic health record (EHR) and laboratory data, developing personalized, evidence-based nutrition plans for post-operative patients. I also evaluated patient feedback and dietary metrics to refine menu design, ultimately improving satisfaction outcomes and supporting recovery efficiency.
+
+2. Lead Research Assistant, The College of New Jersey – Department of Public Health (Dementia Project)
+As a Research Assistant for a New Jersey Department of Health–funded dementia project, I designed and deployed Qualtrics surveys to evaluate caregiver training programs. I managed data collection and IRB documentation, while cleaning and analyzing data in SPSS, R, and Excel. Through statistical testing and interpretation—including t-tests, ANOVA, and regression—I helped generate actionable insights that informed state-level policy reports.
+
+3. Graduate Research Assistant, The College of New Jersey – Department of Public Health (Legionella Project)
+I contributed to a $2.1 million EPA-funded research initiative focused on Legionella detection and prevention. My responsibilities included conducting data mining, performing PCR analyses, and executing exploratory data analysis in R and Excel. I modeled water quality trends and created data visualizations that guided environmental health policy and infection-control strategies.
+
+4. Business Innovation & GPD Intern, Pfizer
+During my internship at Pfizer, I supported the Regulatory Intelligence and Submission Systems (RISS) team as they prepared for FDA and EMA drug approvals. I developed three internal technical guides and collaborated with cross-functional teams to audit and migrate over 500 scientific protocols from a legacy system (E-Workbook) to a new digital platform, improving data accessibility for R&D. Additionally, I gained hands-on experience querying internal databases using SQL and contributed to documentation of mock Discovery Protocols in GEPR to strengthen regulatory readiness.
+
+5. Research Assistant, Drexel University – WELL Center
+At Drexel University’s WELL Center, I supported behavioral health research focused on eating patterns and outcomes. I designed REDCap surveys, managed and cleaned participant datasets, and drafted study protocols for hybrid research designs. My role also included monitoring real-time participant data to ensure integrity and reliability for ongoing analyses.
+
+[My Resume](files+images/Amrutha Banda Website Resume.pdf)
 
 Go back to the [homepage](index.html)

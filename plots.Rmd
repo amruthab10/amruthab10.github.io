@@ -1,33 +1,68 @@
 ---
-title: "Here are some plots "
+title: "FlexDashboard "
 output: 
-  html_document:
-    theme: cerulean
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 
-We often make plots in data science. 
-
-```{r}
+```{r setup, include=FALSE}
+library(flexdashboard)
 library(tidyverse)
-```
+library(p8105.datasets)
 
-Here's a dataframe 
+library(plotly)
+```
 
 ```{r}
-plot_df=
-  tibble(
-    x=rnorm(100, mean=1, sd=2), 
-    y= 1+2*x+ rnorm(100)
-  )
+data("nyc_airbnb")
+
+nyc_airbnb = 
+  nyc_airbnb |> 
+  mutate(rating = review_scores_location / 2) |>
+  select(
+    neighbourhood_group, neighbourhood, rating, price, room_type, lat, long) |>
+  filter(
+    !is.na(rating), 
+    neighbourhood_group == "Manhattan",
+    room_type == "Entire home/apt",
+    price <= 500,
+    price <= 100)
 ```
 
-Here's a plot 
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
 
 ```{r}
-plot_df |> 
-  ggplot(aes(x=x, y=y)) +
-  geom_point()
+nyc_airbnb |>
+  mutate(text_label = str_c("Price: $", price, "\nRating: ", rating)) |> 
+  plot_ly(
+    x = ~lat, y = ~long, type = "scatter", mode = "markers",
+    color = ~price, text = ~text_label, alpha = 0.5)
+
 ```
 
+Column {data-width=350}
+-----------------------------------------------------------------------
 
-Go back to the [homepage](index.html)
+### Chart B
+
+```{r}
+nyc_airbnb |> 
+  mutate(neighbourhood = fct_reorder(neighbourhood, price)) |> 
+  plot_ly(y = ~price, x = ~neighbourhood, color= ~neighbourhood,
+          type = "box", colors = "viridis")
+```
+
+### Chart C
+
+```{r}
+nyc_airbnb |> 
+  count(neighbourhood) |> 
+  mutate(neighbourhood = fct_reorder(neighbourhood, n)) |> 
+  plot_ly(x = ~neighbourhood, y = ~n, 
+          color = ~neighbourhood, type = "bar", colors = "viridis")
+```
+
