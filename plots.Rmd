@@ -64,7 +64,7 @@ instacart |>
     title = "Ordering Trends Throughout the Day",
     xaxis = list(title = "Hour of Day (0–23)"),
     yaxis = list(title = "Number of Orders"),
-    legend = list(orientation = "h"))
+    legend = list(orientation = "v"))
 ```
 
 ### Boxplot

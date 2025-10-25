@@ -13,6 +13,4 @@ Hello, and welcome to my website! My name is Amrutha Banda, and I’m a Master o
 
 
 
-Here's a picture of a Cat: 
 
-![](images/cat.jpg)
