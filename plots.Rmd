@@ -10,13 +10,11 @@ output:
 library(flexdashboard)
 library(tidyverse)
 library(p8105.datasets)
-library(ggplot2)
-
 library(plotly)
 ```
 
 
-```{r setup, include=FALSE}
+```{r include=FALSE}
 data("instacart")
 
 aisles_summary= 
@@ -32,58 +30,62 @@ aisles_summary |>
 ### Barchart
 
 ```{r}
-aisles_summary |> 
-  filter(n > 10000) |> 
-  mutate(aisle = fct_reorder(aisle, n)) |> #shows me aisles based on n (size)
-  ggplot(aes(x = aisle, y = n, fill = aisle)) +
-  geom_col(show.legend = FALSE) +
-  coord_flip() ##flips the long aisle names
-  labs(
+aisles_summary |>
+  filter(n > 10000) |>
+  mutate(aisle = fct_reorder(aisle, n)) |>
+  mutate(hover = paste0("Aisle: ", aisle, "<br>Orders: ", n)) |>
+  plot_ly(
+    x = ~n, y = ~aisle, type = "bar", orientation = "h",
+    text = ~hover, hoverinfo = "text",
+    color = ~aisle, colors = "viridis", showlegend = FALSE ) |>
+  layout(
     title = "Number of Items Ordered by Aisle (>10,000 orders)",
-    x = "Aisle",
-    y = "Number of Items Ordered"
+    xaxis = list(title = "Number of Items Ordered"),
+    yaxis = list(title = "Aisle")
   )
-
 ```
 
 -------------------------------------------------------------------_
 
-### Density Plot
+### Scatter Plot
 
 ```{r}
 instacart |>
   filter(department %in% c("produce", "dairy eggs", "snacks")) |>
-  count(department, order_hour_of_day) |>
-  ggplot(aes(x = order_hour_of_day, y = n, color = department)) +
-  geom_line(size = 1) +
-  geom_point(size = 1.5) +
-  scale_color_viridis_d(option = "plasma", begin = 0.5, end = 0.9)+
-  labs(
+  count(department, order_hour_of_day, name = "orders") |>
+  plot_ly(
+    x = ~order_hour_of_day,
+    y = ~orders,
+    color = ~department,
+    type = "scatter",
+    mode = "lines+markers",
+    colors = c("#4E79A7", "#F28E2B", "#E15"))|>
+  layout(
     title = "Ordering Trends Throughout the Day",
-    x = "Hour of Day",
-    y = "Number of Orders",
-    color = "Department"
-  ) +
-  theme_minimal()
+    xaxis = list(title = "Hour of Day (0–23)"),
+    yaxis = list(title = "Number of Orders"),
+    legend = list(orientation = "h"))
 ```
 
 ### Boxplot
 
 ```{r}
-ggp_instacart_violin = 
-  instacart |> 
-  filter(department %in% c("produce", "dairy eggs", "snacks")) |> 
-  ggplot(aes(x = department, y = add_to_cart_order, fill =    department)) +
-  geom_violin(trim = FALSE, alpha = 0.6) +
-  labs(
+instacart |> 
+  filter(department %in% c("produce", "dairy eggs", "snacks"))|>   mutate(department =fct_reorder(department,add_to_cart_order)) |> 
+  plot_ly(
+    x = ~department,
+    y = ~add_to_cart_order,
+    color = ~department,
+    type = "violin",
+    colors = c("#4E79A7", "#F28E2B", "#E15"),
+    box = list(visible = TRUE),
+    meanline = list(visible = TRUE),
+    opacity = 0.8
+  ) |>
+  layout(
     title = "Distribution of Add-to-Cart Order by Department",
-    x = "Department",
-    y = "Add-to-Cart Order") +
-  scale_fill_viridis_d(option = "plasma", begin = 0.5, end = 0.9)
-  theme_minimal() +
-  theme(
-    plot.title = element_text(face = "bold", size = 13))
-
-ggp_instacart_violin
+    xaxis = list(title = "Department"),
+    yaxis = list(title = "Add-to-Cart Order")
+  )
 ```
 
