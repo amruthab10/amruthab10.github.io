@@ -16,7 +16,7 @@ library(plotly)
 ```
 
 
-```{rsetup, include=FALSE}
+```{r setup, include=FALSE}
 data("instacart")
 
 aisles_summary= 
@@ -53,13 +53,16 @@ aisles_summary |>
 ```{r}
 instacart |>
   filter(department %in% c("produce", "dairy eggs", "snacks")) |>
-  ggplot(aes(x = order_hour_of_day, fill = department)) +
-  geom_density(alpha = 0.4) +
+  count(department, order_hour_of_day) |>
+  ggplot(aes(x = order_hour_of_day, y = n, color = department)) +
+  geom_line(size = 1) +
+  geom_point(size = 1.5) +
+  scale_color_viridis_d(option = "plasma", begin = 0.5, end = 0.9)+
   labs(
-    title = "Distribution of Order Times by Department",
-    x = "Hour of Day (0–23)",
-    y = "Density",
-    fill = "Department"
+    title = "Ordering Trends Throughout the Day",
+    x = "Hour of Day",
+    y = "Number of Orders",
+    color = "Department"
   ) +
   theme_minimal()
 ```
@@ -70,18 +73,16 @@ instacart |>
 ggp_instacart_violin = 
   instacart |> 
   filter(department %in% c("produce", "dairy eggs", "snacks")) |> 
-  ggplot(aes(x = department, y = add_to_cart_order, fill = department)) +
+  ggplot(aes(x = department, y = add_to_cart_order, fill =    department)) +
   geom_violin(trim = FALSE, alpha = 0.6) +
   labs(
     title = "Distribution of Add-to-Cart Order by Department",
     x = "Department",
-    y = "Add-to-Cart Order"
-  ) +
+    y = "Add-to-Cart Order") +
+  scale_fill_viridis_d(option = "plasma", begin = 0.5, end = 0.9)
   theme_minimal() +
   theme(
-    plot.title = element_text(face = "bold", size = 13, hjust = 0.5),
-    axis.text.x = element_text(angle = 25, hjust = 1)
-  )
+    plot.title = element_text(face = "bold", size = 13))
 
 ggp_instacart_violin
 ```
