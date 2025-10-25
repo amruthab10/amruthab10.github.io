@@ -1,25 +1,17 @@
 ---
-title: "My awesome website"
+title: "Amrutha Banda's Website "
 output: 
   html_document:
     toc: true
     toc_float: true
 ---
 
-# This is Amrutha's awesome website 
 
-![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)
+![](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGNsNTZpZDl6NzZqYndzbWh3N2tldWE3Z3FkOXo1ZXV4dnNxbGFlZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Rjub7AIEIbXT0tzbr3/giphy.gif)
 
-You can do everything you might usually do. 
+Hello, and welcome to my website! My name is Amrutha Banda, and I’m a Master of Science student in Biostatistics and Data Science at Columbia University. This site highlights my academic background, research experiences, and professional journey across healthcare, epidemiology, and digital health innovation. You’ll also find links to my GitHub, resume, and interactive data visualizations created in R. Learn more about me over [here](about.html). 
 
-This means you can add test 
 
-This website is an example coming from
-[P8105](https://p8105.com/index.html). We're making websites today! Learn more about this site [here](about.html)
-
-I also use [google](https://www.google.com/) a ton for data science. 
-
-To show that you can just use RMD like normal, check out [this page](plots.html) with plots. 
 
 Here's a picture of a Cat: 
 

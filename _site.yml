@@ -5,7 +5,7 @@ navbar:
   right:
     - text: "Academic and Professional Experience"
       href: about.html
-    - text: "Plots"
+    - text: "FlexDashboard"
       href: plots.html
     - icon: fa-envelope fa-lg
       href: mailto:<ab6169@cumc.columbia.edu>

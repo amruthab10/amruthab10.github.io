@@ -14,8 +14,9 @@ library(p8105.datasets)
 library(plotly)
 ```
 
+
 ```{r}
-data("nyc_airbnb")
+data("instacart")
 
 nyc_airbnb = 
   nyc_airbnb |> 
