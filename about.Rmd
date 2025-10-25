@@ -2,7 +2,7 @@
 title: "Academic and Professional Experience "
 output: 
   html_document:
-    theme: cerulean
+    theme: journal
 ---
 -------------------------------------------------------------
 ![](https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3OTJyN3JlMWpzcnprN3Y1MjNkb3B2amFobjUxaTBlZ2xqc3ZmM2J5cCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/eNAKa7nXenniRdDIu6/giphy.gif)
