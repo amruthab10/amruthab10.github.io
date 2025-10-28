@@ -9,9 +9,9 @@ output:
 -------------------------------------------------------------
 
 
-## Academics: 
+# Academics: 
 
-• Columbia University, Mailman School of Public HealthAug 2025- May 2027 
+• Columbia University, Mailman School of Public Health Aug 2025- May 2027 
 
 *Master of Science in Biostatistics/ Data Science*
 
@@ -20,7 +20,7 @@ output:
 *Bachelor of Science in Public Health, Chemistry Minor* 
 
 
-## Professional: 
+# Professional: 
 
 1. Clinical Nutrition Intern, NYU Langone
 At NYU Langone, I worked alongside registered dietitians to interpret electronic health record (EHR) and laboratory data, developing personalized, evidence-based nutrition plans for post-operative patients. I also evaluated patient feedback and dietary metrics to refine menu design, ultimately improving satisfaction outcomes and supporting recovery efficiency.

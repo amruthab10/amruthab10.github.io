@@ -1,5 +1,5 @@
 ---
-title: "FlexDashboard "
+title: "FlexDashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -13,8 +13,7 @@ library(p8105.datasets)
 library(plotly)
 ```
 
-
-```{r include=FALSE}
+```{r setup, include=FALSE}
 data("instacart")
 
 aisles_summary= 
@@ -26,9 +25,9 @@ aisles_summary |>
 ```
 
 Column {data-width=650}
---------------------------------------------------------------------
+-----------------------------------------------------------------------
 
-### Barchart
+### Chart A
 
 ```{r}
 aisles_summary |>
@@ -38,19 +37,22 @@ aisles_summary |>
   plot_ly(
     x = ~n, y = ~aisle, type = "bar", orientation = "h",
     text = ~hover, hoverinfo = "text",
-    color = ~aisle, colors = "viridis", showlegend = FALSE ) |>
+    color = ~aisle, colors = "viridis", showlegend = FALSE
+  ) |>
   layout(
     title = "Number of Items Ordered by Aisle (>10,000 orders)",
     xaxis = list(title = "Number of Items Ordered"),
-    yaxis = list(title = "Aisle")
+    yaxis = list(
+      title = list(text = "Aisle", standoff = 30) 
+    ),
+    margin = list(l = 100, r = 20, t = 50, b = 50) 
   )
 ```
 
 Column {data-width=350}
+-----------------------------------------------------------------------
 
--------------------------------------------------------------------_
-
-### Scatter Plot
+### Chart B
 
 ```{r}
 instacart |>
@@ -68,9 +70,10 @@ instacart |>
     xaxis = list(title = "Hour of Day (0–23)"),
     yaxis = list(title = "Number of Orders"),
     legend = list(orientation = "v"))
+
 ```
 
-### Boxplot
+### Chart C
 
 ```{r}
 instacart |> 
@@ -86,9 +89,9 @@ instacart |>
     opacity = 0.8
   ) |>
   layout(
-    title = "Distribution of Add-to-Cart Order by Department",
+    title = "Cart Order Distribution",
     xaxis = list(title = "Department"),
     yaxis = list(title = "Add-to-Cart Order")
   )
-```
 
+```
