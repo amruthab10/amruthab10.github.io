@@ -3,6 +3,8 @@ title: "Academic and Professional Experience "
 output: 
   html_document:
     theme: journal
+    toc: true
+    toc_float: true
 ---
 -------------------------------------------------------------
 ![](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWtwbnE1dnE2ZDl5aXVraXd0MTAwcmQ0cWkwNHhsZjQ4amFsbnltNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/j01sl1K7r645q/giphy.gif)

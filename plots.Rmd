@@ -13,6 +13,12 @@ library(p8105.datasets)
 library(plotly)
 ```
 
+```{r results='asis', echo=FALSE}
+
+cat("<div style='padding:8px 12px'><a href='index.html'>&larr; Back to Home</a></div>")
+
+```
+
 ```{r include=FALSE}
 data("instacart")
 
