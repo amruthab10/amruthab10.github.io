@@ -13,7 +13,7 @@ library(p8105.datasets)
 library(plotly)
 ```
 
-```{r setup, include=FALSE}
+```{r include=FALSE}
 data("instacart")
 
 aisles_summary= 
